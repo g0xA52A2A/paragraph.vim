@@ -3,10 +3,7 @@ function! paragraph#Motion(count, forward, visual)
     normal! gv
   endif
 
-  let first_line = 1
-  let last_line  = line('$')
-  let delta      = (a:forward) ?  1  : -1
-  let motion     = (a:forward) ? '}' : '{'
+  let [delta, motion] = (a:forward) ?  [1, '}'] : [-1, '{']
 
   if a:forward
     let adjust = empty(getline(line('.') + delta)) ? '+' : '-'
@@ -14,7 +11,7 @@ function! paragraph#Motion(count, forward, visual)
     let adjust = empty(getline(line('.') + delta)) ? '-' : '+'
   endif
 
-  if line('''' . motion) != first_line && line('''' . motion) != last_line
+  if line('''' . motion) != 1 && line('''' . motion) != line('$')
     execute 'normal!' a:count . motion . adjust
   else
     execute 'normal!' a:count . motion
