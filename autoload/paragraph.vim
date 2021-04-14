@@ -1,4 +1,4 @@
-function! paragraph#Motion(count, forward, visual)
+function! paragraph#Motion(count, forward, visual) abort
   if a:visual
     normal! gv
   endif
