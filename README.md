@@ -1,4 +1,4 @@
-# paragraphs.vim
+# paragraph.vim
 
 Replaces the `{` and `}` motions such that they always land on the
 non-blank lines at the start/end of a paragraph rather than the blank
